@@ -39,12 +39,12 @@ Quantize-mesh形式に興味のある方は、[このサイト](https://cesium.c
 
 ### 1.2. PLATEAU-Terrainの概要
 PLATEAU VIEWでは、quantized-mesh形式のデータを.terraindb形式のファイルとして作成したPLATEAU-Terrainを利用しています。
-PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標高モデル5mメッシュを基本とし、5mメッシュが存在しない場所は、基盤地図情報数値標高モデル10mメッシュを利用して作成されています。また、ジオイドモデルにはCesiumがサポートしているEGM96を使用しています。
+PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標高モデル5mメッシュを基本とし、5mメッシュが存在しない場所は基盤地図情報数値標高モデル10mメッシュを利用して作成されています。また、ジオイドモデルにはCesiumがサポートしているEGM96を使用しています。
 詳細なデータ作成方法については後述「3. 地形データの作成」を参照してください。
 
 ## 2. PLATEAU-Terrainの利用方法
 ### 2.1. アクセストークン及びアセットID
-PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDをお使いください。  
+PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDを利用してください。  
 なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
 
  - トークン
@@ -56,7 +56,7 @@ PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセッ�
 Cesium上でPLATEAU-Terrainを利用するためのサンプルコードを示します。  
 地形データの配信についてご質問がある方は、PacificSpatialSolutions株式会社（info@pacificspatial.com）までご連絡ください。  
 配信された地形データを利用する場合は、「地形データは、測量法に基づく国土地理院長承認（使用）R3JHs 778を得て使用」とデータの帰属に記載してください。  
-なお、建物モデルは[PLATEAU-3DTiles](../3d-tiles/plateau-3dtiles-streaming.md)から配信されている千代田区の建物モデルデータを、ドレープするオルソ写真は[PLATEAU-Ortho](../ortho/ortho.md)から配信されている東京23区の航空写真を参照しています。  
+なお、建物モデルは[PLATEAU-3DTiles](../3d-tiles/plateau-3dtiles-streaming.md)から配信されている千代田区の建物モデルデータを、ドレープするオルソ写真は[PLATEAU-Ortho](/ortho/plateau-ortho-streaming.md)から配信されている東京都23区の航空写真を参照しています。  
 Cesiumの構築方法についてはCesium GS社の[チュートリアル](https://cesium.com/learn/cesiumjs-learn/)や[ドキュメント](https://cesium.com/learn/cesiumjs/ref-doc/Viewer.html)を参照してください。
 
 ```
@@ -264,27 +264,6 @@ FMEにより複数の水平解像度のDEMを用意した場合は、海域に�
 - 以上で、重ねあわされた地形データが完成します。必要に応じてこのプロセスを繰り返し、目的とする地形データを作成します。
 
 <img src="images/terrain_ceisum_ion_dialog_6.png" alt="fme 10B" style="width:500px;">
-
-<!--
-### オープンデータとして配布されている地形データのS3へのアップロード
-
-オープンデータとしてG空間情報センターから配布されている地形データ（xxxxxxx）は、前述のFMEを利用したプロセスを経て、現在オープンデータとして入手できるデータを利用して作成した最高精度の地形データです。日本全国をカバーする高精度の地形データであるため、ファイルサイズが大きく、Cesium.ionのアカウントに、ブラウザー経由でアップロードすることができません。そのため、Amazon Web Service（AWS）のS3経由でCeisum ionのアカウントにアップロードします。まずは、AWSにバケットを作成し、地形データファイルをアップロードしてください。AWSでS3のバケットを用意する手順については、[Amazon社の公式サイト](https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/create-bucket-overview.html)などを参考にしてください。
-
-いったんS3のバケットを用意できたら、バケットにアクセスできるAccess Key
-IDとSecret Access Keyを発行してください。Access Key IDとSecret Access
-Keyの発行方法がわからない方は[Amazon社の公式サイト](https://aws.amazon.com/jp/premiumsupport/knowledge-center/create-access-key/)などを参考にしてください。
-
-#### 地形データのCesium.ionアカウントへの読み込み
-
-地形データがS3のバケットに保存されれば、Cesium.ionにインポートする準備ができたことになります。Cesium.ionのアカウントにログインし、My Assetsタブを開き、「Add data」ボタンをクリックしてください。すると、「Add from S3...」というボタンが現れるのでクリックしてください。
-
-<img src="images/terrain_ceisum_ion_dialog_1.png" alt="fme 10B" style="width:500px;">
-
-そのうえで次に現れる画面で、S3へアクセスするためのAccess Key IDや、Secret Access Keyなどを指定し、「Upload」ボタンをクリックしてください。問題なくアップロードされれば、Ceisum.ion上で、Asset IDが発行されるので、その番号を利用して、PLATEAU VIEWの地形データとして利用してください。
-
-<img src="images/terrain_ceisum_ion_dialog_1.png" alt="fme 10B" style="width:500px;">
--->
-
 
 ### 3.3. 地形データの配信について
 Ceisumで地形データを利用するには、地形データをサーバーから配信する必要があります。XYZタイルデータなどと異なり、データファイルを置いておくだけでは地形データは利用できません。  
