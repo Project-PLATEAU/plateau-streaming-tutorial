@@ -14,5 +14,5 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 | データセット | 説明 | チュートリアル |
 |:-----------|:-----------|:-----------|
 | PLATEAU-3DTiles | 建築物モデル等の3DTilesデータ | [plateau-3dtiles-streaming](/3d-tiles/plateau-3dtiles-streaming.md) |
-| PLATEAU-Terrain | 地形モデルのTerraindbデータ | [plateau-terrain-streaming]() |
-| PLATEAU-Ortho | 航空写真オルソ画像タイルデータ | [plateau-ortho-streaming]() |
+| PLATEAU-Terrain | 地形モデルのTerraindbデータ | [plateau-terrain-streaming](/terrain/plateau-terrain-streaming.md) |
+| PLATEAU-Ortho | 航空写真オルソ画像タイルデータ | [plateau-ortho-streaming](/ortho/plateau-ortho-streaming.md) |
