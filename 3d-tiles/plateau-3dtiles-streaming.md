@@ -83,6 +83,7 @@ PLATEAU-3DTilesの配信サービスを利用することで、独自に立ち�
 
 ## 4. 配信データ（3DTiles）一覧
 2021年度末の時点でProject PLATEAUが[G空間情報センター](https://www.geospatial.jp/ckan/dataset/plateau)において公開している56都市の3DTilesデータを利用可能です。
+配信URL一覧の取得方法は[こちら](../README.md)を参照してください。
 
 |データセット名|細分|URL|
 |:----|:----|:----|
