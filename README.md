@@ -41,3 +41,8 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 | year | 整備年度 | データが整備された年度。例えば、 `2022` の場合は2022年度に整備されたデータであることを意味します。 |
 | lod | LOD | データのLOD |
 | no_texture | テクスチャなし | 建築物モデルでテクスチャなし版の場合 `true` |
+
+### 5. 更新履歴
+| Day | Update | 説明 |
+|:-----------|:-----------|:-----------|
+| 2023/4/28 | 3D Tiles配信URLの更新 | [plateau-3dtiles-streaming](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesを新バージョンにアップデートしました。また、[3dtiles_url.json](/3dtiles_url.json)の仕様を新仕様に変更しました。これに伴い、旧配信URLは2023年度中に運用を終了しますので、ご注意ください。|
