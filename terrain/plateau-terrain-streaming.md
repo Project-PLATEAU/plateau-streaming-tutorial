@@ -1,11 +1,13 @@
 # plateau-terrain-streaming
-### PLATEAU-Terrain配信チュートリアル   
+### PLATEAU-Terrain配信チュートリアル
 ## 1. PLATEAU-Terrainの概要
+
 Project PLATEAUでは、日本全国の地形データを三次元形状で作成し、PLATEAU-Terrainとして配信を行っています。本チュートリアルでは、地形データ作成技術及びPLATEAU-Terrainの利用方法について解説します。
 
 ### 1.1. 地形データについて
 
-地形データとは、地形を3次元でモデル化したデータです。通常、地形データはほかの3次元データを重畳するための基盤データとして利用され、地形データ自体を視覚的に表現することはありません。  
+地形データとは、地形を3次元でモデル化したデータです。通常、地形データはほかの3次元データを重畳するための基盤データとして利用され、地形データ自体を視覚的に表現することはありません。
+
 PLATEAU VIEWでは、地形データの上に、地理院タイルやオルソ写真、そのほか2次元のタイルデータをドレープ（覆いかぶせる処理）して地表面を表示しています。地形データとは、3次元データを表示する際の骨格のようなデータということができます。
 
 <img src="image/../images/terrain_image.png" alt="terrain image" style="width:600px;">
@@ -13,13 +15,16 @@ PLATEAU VIEWでは、地形データの上に、地理院タイルやオルソ�
 図1　地形データのイメージ（引用：https://cesium.com/blog/2015/12/18/terrain-quantization/ ）
 
 地形データの種類やデータフォーマットには様々なものがあります。これらのうち、PLATEAU
-VIEWを構成するCeisumでは、[quantized-mesh形式](https://github.com/CesiumGS/quantized-mesh)のデータを利用しています。  
-Quantized-mesh形式は、3Dのメッシュデータを量子化（quantization）して圧縮する方式で、通常のメッシュデータよりもデータサイズと使用メモリ量を大幅に縮小することができます。  
+VIEWを構成するCeisumでは、[quantized-mesh形式](https://github.com/CesiumGS/quantized-mesh)のデータを利用しています。
+
+Quantized-mesh形式は、3Dのメッシュデータを量子化（quantization）して圧縮する方式で、通常のメッシュデータよりもデータサイズと使用メモリ量を大幅に縮小することができます。
+
 Quantize-mesh形式に興味のある方は、[このサイト](https://cesium.com/blog/2015/12/18/terrain-quantization/)をご覧ください。
 
 地形データには、quantized-mesh形式以外にも様々な形式が存在します。それらの地形データの詳細については、以下にリストとしてURLをまとめましたので、それぞれのサイトを参照してください。
 
 ### 地形データの種類
+
 - 標高タイル
   - <https://maps.gsi.go.jp/development/demtile.html>
 - Mapbox Terrain-RGB v1
@@ -38,13 +43,19 @@ Quantize-mesh形式に興味のある方は、[このサイト](https://cesium.c
   - <https://ja.wikipedia.org/wiki/TIN>
 
 ### 1.2. PLATEAU-Terrainの概要
+
 PLATEAU VIEWでは、quantized-mesh形式のデータを.terraindb形式のファイルとして作成したPLATEAU-Terrainを利用しています。
+
 PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標高モデル5mメッシュを基本とし、5mメッシュが存在しない場所は基盤地図情報数値標高モデル10mメッシュを利用して作成されています。また、ジオイドモデルにはCesiumがサポートしているEGM96を使用しています。
+
 詳細なデータ作成方法については後述「3. 地形データの作成」を参照してください。
 
 ## 2. PLATEAU-Terrainの利用方法
+
 ### 2.1. アクセストークン及びアセットID
-PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDを利用してください。  
+
+PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDを利用してください。
+
 なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
 
  - トークン
@@ -53,20 +64,23 @@ PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセッ�
    - 770371
 
 ### 2.2 Ceisumのアプリケーション作成
-Cesium上でPLATEAU-Terrainを利用するためのサンプルコードを示します。  
-地形データの配信についてご質問がある方は、PacificSpatialSolutions株式会社（info@pacificspatial.com）までご連絡ください。  
-配信された地形データを利用する場合は、「地形データは、測量法に基づく国土地理院長承認（使用）R3JHs 778を得て使用」とデータの帰属に記載してください。  
-なお、建物モデルは[PLATEAU-3DTiles](../3d-tiles/plateau-3dtiles-streaming.md)から配信されている千代田区の建物モデルデータを、ドレープするオルソ写真は[PLATEAU-Ortho](/ortho/plateau-ortho-streaming.md)から配信されている東京都23区の航空写真を参照しています。  
+
+Cesium上でPLATEAU-Terrainを利用するためのサンプルコードを示します。　
+地形データの配信についてご質問がある方は、PacificSpatialSolutions株式会社（info@pacificspatial.com）までご連絡ください。
+
+配信された地形データを利用する場合は、「地形データは、測量法に基づく国土地理院長承認（使用）R3JHs 778を得て使用」とデータの帰属に記載してください。
+
+なお、建物モデルは[PLATEAU-3DTiles](../3d-tiles/plateau-3dtiles-streaming.md)から配信されている千代田区の建物モデルデータを、ドレープするオルソ写真は[PLATEAU-Ortho](/ortho/plateau-ortho-streaming.md)から配信されている東京都23区の航空写真を参照しています。
+
 Cesiumの構築方法についてはCesium GS社の[チュートリアル](https://cesium.com/learn/cesiumjs-learn/)や[ドキュメント](https://cesium.com/learn/cesiumjs/ref-doc/Viewer.html)を参照してください。
 
-```
-<html lang=ja>
+```html
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>オルソ画像タイルと日本の地形モデルをCesiumで表示</title>
-  <!-- Include the CesiumJS JavaScript and CSS files -->
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Widgets/widgets.css" rel="stylesheet"></head>
+  <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Widgets/widgets.css" rel="stylesheet"></head>
 </head>
 <style>
   #cesiumContainer {
@@ -94,27 +108,31 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 <body>
   <div id="cesiumContainer"></div>
   <script>
-    // Cesium Ionの読み込み指定
+    // Cesium ionの読み込み指定
     Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE";
+
     // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
     var viewer = new Cesium.Viewer("cesiumContainer", {
       terrainProvider: new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(770371)
+        url: Cesium ionResource.fromAssetId(770371)
       })
     });
-    
-    // G空間情報センターに置かれている、プロジェクトPlateauで作成した、オルソ画像タイルの参照
-    var imageProvider = new Cesium.UrlTemplateImageryProvider({ url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png', maximumLevel : 19});
-    var current_image = viewer.scene.imageryLayers.addImageryProvider(imageProvider); 
-    
+
+    // PLATEAU-Orthoの参照
+    var imageProvider = new Cesium.UrlTemplateImageryProvider({
+      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+      maximumLevel: 19
+    });
+    var currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
+
    // 東京都千代田区の建物データ（3D Tiles）
     var your_3d_tiles = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-      url : 'https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json'
+      url: 'https://assets.cms.plateau.reearth.io/assets/11/6d05db-ed47-4f88-b565-9eb385b1ebb0/13100_tokyo23-ku_2022_3dtiles%20_1_1_op_bldg_13101_chiyoda-ku_lod1/tileset.json'
     }));
-    
+
     // カメラの初期位置の指定
     viewer.camera.setView({
-      destination : Cesium.Cartesian3.fromDegrees(139.76, 35.68, 5000.0)
+      destination: Cesium.Cartesian3.fromDegrees(139.76, 35.68, 5000.0)
     });
   </script>
 </body>
@@ -123,13 +141,15 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 
 ## 3. 地形データの作成
 
-PLATEAU-Terrainなどのオープンデータとして利用できる地形データを利用することに加え、独自に地形データを作成することも可能です。  
+PLATEAU-Terrainなどのオープンデータとして利用できる地形データを利用することに加え、独自に地形データを作成することも可能です。
 本節では、独自に地形データを整備するために必要なデジタル標高モデル（DEM）データの作成方法について説明します。
 
 ### 3.1. DEMデータの作成
 
-地形データを作成する場合は、地形データのもととなるラスター形式のデジタル標高モデル（DEM）を準備する必要があります。  
-ここでは、国土地理院が整備する基盤地図情報数値標高モデルを利用し、FMEを用いてDEMデータを作成する方法について説明します。  
+地形データを作成する場合は、地形データのもととなるラスター形式のデジタル標高モデル（DEM）を準備する必要があります。
+
+ここでは、国土地理院が整備する基盤地図情報数値標高モデルを利用し、FMEを用いてDEMデータを作成する方法について説明します。
+
 なお、DEMデータは様々な方法で作成可能であり、必ずしもFMEを利用する必要はありません。例えば、GISソフトウェアを利用して基盤地図情報数値標高モデル(10mメッシュ）を一つの大きなメッシュのDEMデータとして統合することで地形データを作成するためのデータソースとして利用できます。
 
 ### 3.1.1. 作業フォルダとFMEワークスペースの格納
@@ -149,9 +169,7 @@ PLATEAU-Terrainなどのオープンデータとして利用できる地形デ�
 
 ### 3.1.2 DEMデータのダウンロード
 
-次に、基盤地図情報数値標高モデルをダウンロードします。基盤地図情報ダウンロードサイトから対象とする地域の数値標高モデル（DEM）データ（5A,
-5B, 5C, 10A,
-10B）をすべてダウンロードし、作業フォルダーに保存してください。
+次に、基盤地図情報数値標高モデルをダウンロードします。基盤地図情報ダウンロードサイトから対象とする地域の数値標高モデル（DEM）データ（5A, 5B, 5C, 10A, 10B）をすべてダウンロードし、作業フォルダーに保存してください。
 
 基盤地図情報DEMの各データセット（2次メッシュ区画単位）のzipファイルは解凍しないでください。基盤地図情報ダウンロードサイトの「まとめてダウンロード」機能を使って複数のデータセット（zip）をさらにまとめたzipファイルでダウンロードした場合には、最上位のzipのみ解凍して2次メッシュ区画単位のデータセットに展開しておいてください。
 
@@ -166,8 +184,7 @@ Translatorによってワークスペースを実行することにより、GeoT
 
 - ワークスペース名：s1_基盤地図情報DEMのGeoTIFF変換_runner.fmw
 
-  - このワークスペースを実行することにより、作業フォルダー以下（サブフォルダーも含む）に保存したすべての基盤地図情報DEMデータをDEMラスターに変換し、出力先として指定したフォルダー内のDEMタイプ別サブフォルダー（dem5a,
-        dem5b, dem5c, dem10a, dem10b）にGeoTIFF形式で保存します。
+  - このワークスペースを実行することにより、作業フォルダー以下（サブフォルダーも含む）に保存したすべての基盤地図情報DEMデータをDEMラスターに変換し、出力先として指定したフォルダー内のDEMタイプ別サブフォルダー（dem5a, dem5b, dem5c, dem10a, dem10b）にGeoTIFF形式で保存します。
 
 <img src="images/terrain_fme_runner_dialog.png" alt="fme runner dialog" style="width:500px;" >
 
@@ -183,11 +200,11 @@ Translatorによってワークスペースを実行することにより、GeoT
 | Workspace Runs per FME Process| ひとつのFMEプロセスによるワークスペースの実行回数（N）|
 
   - このワークスペースは、基盤地図情報DEMデータ（\*.zip）を1ファイルずつGeoTIFF形式に変換するための子ワークスペース「s1_基盤地図情報DEMのGeoTIFF変換.fmw」(同一フォルダー内に保存されていることを前提とします)をファイル数分、繰り返し実行します。
-  
+
   - このワークスペースによる1ファイルあたりの変換時間は数秒ですが、多数のファイルを処理する場合にファイルごとに毎回FMEプロセスを起動するのでは、そのオーバーヘッドも無視できないほど大きくなります。そのため、このワークスペースでは、Workspace Runs per FME Process パラメーターでひとつのFMEプロセス（1回の起動）による子ワークスペースの実行回数（N）、Maximum　Concurrent FME Processes によって同時に実行できるFMEプロセス数（M, 最大7）を設定することにより、全体の効率化を図っています。
 
   - FME Desktopによって同一マシンで同時に実行できるFMEプロセス（データ変換処理）数の上限は8ですが、このワークスペースを実行することで1プロセスを使うため、同時に実行できる子ワークスペース用のプロセス数の上限は7です。
-  
+
   - マシンのスペックやFMEによって同時に行う他のデータ変換プロセス数も勘案してまずMを決め、Nには、処理の対象とする全ファイル数÷Mをある整数で割った値に近い数を設定するのが適当です。
 
 
@@ -218,25 +235,24 @@ s2_海面つきDEM10B_GeoTIFF作成.fmwで使用するパラメタの説明
 
 ### 3.2. 地形データへの変換
 
-ここでは、Cesium.ionを利用したDEMデータの地形データへの変換方法を説明します。  
-Ceisum.ionのサービスを利用することで、データの変換後、地形データの配信も行えるようになります。なお、Cesium.ionは有償サービスですが、一定の範囲内であれば無償で利用可能です。  
-Ceisum.ionでは、ユーザーがアップロードしたDEMファイルをterraindb形式に変換し、配信に利用可能です。terraindb形式への変換は、Ceisum.ionのクラウドサービスに加え、Ceisumのオンプレミス（有償）で提供される変換プログラムでも行えます。日本全国の詳細な地形データを作成する場合は、Cesiumのオンプレミスの利用をお勧めします。
+ここでは、Cesium ionを利用したDEMデータの地形データへの変換方法を説明します。
 
-なお、その他の地形データの利用方法としては、Pythonのライブラリである、quantized-mesh-encorder
-(<https://pypi.org/project/quantized-mesh-encoder/>)
-を利用してQuantized-mesh形式の地形データを準備し、Tile Map
-Service（TMS：<https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification>）を利用して配信する方法などがあります。
+Cesium ionのサービスを利用することで、データの変換後、地形データの配信も行えるようになります。なお、Cesium ionは有償サービスですが、一定の範囲内であれば無償で利用可能です。
 
+Cesium ionでは、ユーザーがアップロードしたDEMファイルをterraindb形式に変換し、配信に利用可能です。terraindb形式への変換は、Cesium ionのクラウドサービスに加え、Ceisumのオンプレミス（有償）で提供される変換プログラムでも行えます。日本全国の詳細な地形データを作成する場合は、Cesiumのオンプレミスの利用をお勧めします。
 
-### 3.2.1. Cesium.ionアカウント開設
+なお、その他の地形データの利用方法としては、Pythonのライブラリである、quantized-mesh-encorder (<https://pypi.org/project/quantized-mesh-encoder/>) を利用してQuantized-mesh形式の地形データを準備し、Tile Map Service（TMS：<https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification>）を利用して配信する方法などがあります。
 
-まず、Ceisum ion（https://cesium.com/）のアカウントを用意します。Ceisum
-ionは、商用の3Dデータ配信サービスです。手持ちのCityGMLや点群データ、地形データなどを配信し、PLATEAU VIEWなどで利用することができます。  
+### 3.2.1. Cesium ionアカウント開設
+
+まず、Ceisum ion（https://cesium.com/）のアカウントを用意します。Ceisum ionは、商用の3Dデータ配信サービスです。手持ちのCityGMLや点群データ、地形データなどを配信し、PLATEAU VIEWなどで利用することができます。
+
 データサイズが50 GBを超える場合、有料のCommercialアカウント以上を利用する必要があります。
 
 ### 3.2.2. 作成したDEMのアップロードと変換
 
-FME等で作成した地形データ作成用のDEMを開設したCeisum.ionのアカウントにアップロードしてterraindb形式の地形データを準備します。  
+FME等で作成した地形データ作成用のDEMを開設したCeisum ionのアカウントにアップロードしてterraindb形式の地形データを準備します。
+
 FMEにより複数の水平解像度のDEMを用意した場合は、海域に標高値を与えた 10B 10A 5C 5B 5A の順にアップロードし、解像度の高いDEMが一番最後にくるようにしてください。
 
 以下では例として、5B 5A のDEMをアップロードし、地形データを作成する手順を示しますが、さらに多くのDEMを重ね合わせて地形データを作成する場合も同じ作業を繰り返すだけです。
@@ -246,7 +262,7 @@ FMEにより複数の水平解像度のDEMを用意した場合は、海域に�
 <img src="images/terrain_ceisum_ion_dialog_1.png" alt="fme 10B" style="width:500px;">
 
 - Add Dataページで、「Add files...」と書かれた青いボタンをクリックし、対象となるファイルを指定!
-  
+
 <img src="images/terrain_ceisum_ion_dialog_2.png" alt="fme 10B" style="width:500px;">
 
 - 対象ファイルがリストに現れたら、Asset name（ユーザーが変更可能）を入力し、What kind of data is this？を「Raster Terrain」に指定します。すると画面左下にベースとなるTerrainデータがリストされるので、最初は、Mean Sea Levelを指定します。指定するベースTerrain（地形）は、Mean Sea Levelでなくても構いません。そのうえで、画面左下にある「Upload」ボタンをクリックして、最初のベースとなる5Bデータをアップロードします。
@@ -267,14 +283,17 @@ FMEにより複数の水平解像度のDEMを用意した場合は、海域に�
 
 
 ### 3.3. 地形データの配信について
-Ceisumで地形データを利用するには、地形データをサーバーから配信する必要があります。XYZタイルデータなどと異なり、データファイルを置いておくだけでは地形データは利用できません。  
-ここでは、Cesium.ionの配信サービスを利用した方法を説明します。
 
-### 3.3.1. Cesium.ionで地形データを表示する方法
-前節によりCesium.ionで作成したTerraindb形式の地形データをCesiumで表示するためには、データカタログJSONファイルに登録するか、config.jsonを変更してデフォルトの地形データとして利用する必要があります。  
+Ceisumで地形データを利用するには、地形データをサーバーから配信する必要があります。XYZタイルデータなどと異なり、データファイルを置いておくだけでは地形データは利用できません。
 
-- データカタログに登録する方法  
-カタログアイテムの一つとして地形データを読み込む場合は、以下を参考に、カタログアイテムを追加してください（your_xxx の部分は自分のCesium.ionの環境に合わせてください）。
+ここでは、Cesium ionの配信サービスを利用した方法を説明します。
+
+### 3.3.1. TerriaJSでCesium ionから配信される地形データを表示する方法
+
+前節によりCesium ionで作成したTerraindb形式の地形データをTerriaJSで表示するためには、データカタログJSONファイルに登録するか、config.jsonを変更してデフォルトの地形データとして利用する必要があります。
+
+- データカタログに登録する方法
+カタログアイテムの一つとして地形データを読み込む場合は、以下を参考に、カタログアイテムを追加してください（your_xxx の部分は自分のCesium ionの環境に合わせてください）。
 
 ```
 {
@@ -287,11 +306,11 @@ Ceisumで地形データを利用するには、地形データをサーバー�
 ```
 
 - デフォルトの地形データとする方法
-デフォルトの地形データとして利用するには、配信のための設定ファイルが収められているCesiumのwwwrootフォルダにあるconfig.jsonを編集します。  
-以下の設定を書き込んで保存してください（your_xxxの部分は自分の環境に合わせてください）。  
+デフォルトの地形データとして利用するには、配信のための設定ファイルが収められているCesiumのwwwrootフォルダにあるconfig.jsonを編集します。
+以下の設定を書き込んで保存してください（your_xxxの部分は自分の環境に合わせてください）。
 
 ```
-"useCesiumIonTerrain": true, 
+"useCesiumIonTerrain": true,
 “cesiumTerrainAssetId”: your_asset_id,
 "cesiumIonAccessToken": "your_ion_access_token",
 ```
