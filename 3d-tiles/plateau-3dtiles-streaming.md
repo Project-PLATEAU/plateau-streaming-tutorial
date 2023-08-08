@@ -31,8 +31,8 @@ PLATEAU-3DTilesの配信サービスを利用することで、独自に立ち�
 <head>
   <meta charset="UTF-8">
   <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Widgets/widgets.css" rel="stylesheet"></head>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.108/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.108/Build/Cesium/Widgets/widgets.css" rel="stylesheet"></head>
 </head>
 <style>
   #cesiumContainer {
@@ -62,30 +62,30 @@ PLATEAU-3DTilesの配信サービスを利用することで、独自に立ち�
   <script>
     // Cesium ionの読み込み指定
     Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE";
-
-    // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
-    var viewer = new Cesium.Viewer("cesiumContainer", {
-      terrainProvider: new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(770371)
-      })
-    });
-
-    // G空間情報センターに置かれている、Project PLATEAUで作成したPLATEAUオルソの参照
-    var imageProvider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
-      maximumLevel: 19
-    });
-    var currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
-
-   // 東京都千代田区の建物データ（3D Tiles）
-    var your_3d_tiles = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-      url: 'https://assets.cms.plateau.reearth.io/assets/11/6d05db-ed47-4f88-b565-9eb385b1ebb0/13100_tokyo23-ku_2022_3dtiles%20_1_1_op_bldg_13101_chiyoda-ku_lod1/tileset.json'
-    }));
-
-    // カメラの初期位置の指定
-    viewer.camera.setView({
-      destination: Cesium.Cartesian3.fromDegrees(139.76, 35.68, 5000.0)
-    });
+    
+    (async ()=>{
+        // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
+        var viewer = new Cesium.Viewer("cesiumContainer", {
+          terrainProvider:  await Cesium.CesiumTerrainProvider.fromIonAssetId(770371)
+        });
+    
+        // G空間情報センターに置かれている、Project PLATEAUで作成したPLATEAUオルソの参照
+        var imageProvider = new Cesium.UrlTemplateImageryProvider({
+          url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+          maximumLevel: 19
+        });
+        var currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
+    
+       // 東京都千代田区の建物データ（3D Tiles）
+        var your_3d_tiles = viewer.scene.primitives.add(await Cesium.Cesium3DTileset.fromUrl(
+          'https://assets.cms.plateau.reearth.io/assets/11/6d05db-ed47-4f88-b565-9eb385b1ebb0/13100_tokyo23-ku_2022_3dtiles%20_1_1_op_bldg_13101_chiyoda-ku_lod1/tileset.json'
+        ));
+    
+        // カメラの初期位置の指定
+        viewer.camera.setView({
+          destination: Cesium.Cartesian3.fromDegrees(139.76, 35.68, 5000.0)
+        });
+    })();
   </script>
 </body>
 </html>
