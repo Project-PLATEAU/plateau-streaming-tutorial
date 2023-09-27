@@ -45,4 +45,5 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 ### 5. 更新履歴
 | Day | Update | 説明 |
 |:-----------|:-----------|:-----------|
-| 2023/4/28 | 3D Tiles配信URLの更新 | [plateau-3dtiles-streaming](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesを新バージョンにアップデートしました。建築物モデル以外も、都市設備モデルや植生モデル等の3D Tilesデータが利用可能となっています。また、[3dtiles_url.json](/3dtiles_url.json)の仕様を新仕様に変更しました。これに伴い、旧配信URLは2023年度中に運用を終了しますので、ご注意ください。|
+| 2023/09/25 | 3D Tiles配信URLの更新 | [plateau-3dtiles-streaming](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesの一覧をアップデートしました。|
+| 2023/04/28 | 3D Tiles配信URLの更新 | [plateau-3dtiles-streaming](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesを新バージョンにアップデートしました。建築物モデル以外も、都市設備モデルや植生モデル等の3D Tilesデータが利用可能となっています。また、[3dtiles_url.json](/3dtiles_url.json)の仕様を新仕様に変更しました。これに伴い、旧配信URLは2023年度中に運用を終了しますので、ご注意ください。|
