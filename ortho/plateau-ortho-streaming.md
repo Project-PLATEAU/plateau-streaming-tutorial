@@ -80,15 +80,72 @@ Project PLATEAUで配布しているデータの利用許諾については、�
 
 ## 2. PLATEAUオルソの利用方法
 
-本節では、PLATEAUオルソをCesiumJS、TerriaJS、Leaflet、QGISで利用する方法について解説します。
+本節では、PLATEAUオルソ(xyzタイル）をCesiumJS、TerriaJS、Leaflet、QGISで利用する方法について解説します。
 
 ### 2.1. 配信URL
 
-PLATEAUオルソは以下のURLから利用できます。
+- PLATEAUオルソ（xyzタイル）は以下のURLから利用できます。
 
 なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
 
 `https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png`
+
+- PLATEAUオルソ（OGC WMS）は以下のAPIから利用できます。
+
+なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
+
+
+**サービスアドレス**
+
+```
+https://plateauortho.geospatial.jp/mapproxy/service
+```
+
+**WMSバージョン**
+
+WMSバージョン1.1.1または1.3.0に準拠しています。
+
+**WMSリクエスト**
+
+以下のWMSリクエストをサポートしています。
+
+- GetCapabilities
+- GetMap
+
+**座標系**
+
+EPSG 4326、EPSG 3857、EPSG 900913、CRS 84をサポートしています。
+
+**レイヤー**
+
+|レイヤー名|内容|
+|:---:|:---:|
+|plateau|PLATEAUオルソ|
+|photo|国土地理院の写真（ベースマップ）|
+|plateau_photo|plateauとphotoの重ね合わせ|
+
+**リクエスト例**
+
+- GetCapabilities
+
+```
+https://plateauortho.geospatial.jp/mapproxy/service?REQUEST=GetCapabilities
+```
+
+- GetMap
+
+EPSG:3857でのリクエスト例
+
+```
+https://plateauortho.geospatial.jp/mapproxy/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=15528612.30738627352,4234060.365724110045,15581327.2790426109,4277115.012342031114&CRS=EPSG:3857&WIDTH=1075&HEIGHT=878&LAYERS=plateau_photo&STYLES=&FORMAT=image/png&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi:96&TRANSPARENT=TRUE
+```
+
+EPSG:4326でのリクエスト例
+
+```
+https://plateauortho.geospatial.jp/mapproxy/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=35.62364808927861759,139.853018468884585,35.67783063591231496,139.9193581472800645&CRS=EPSG:4326&WIDTH=1075&HEIGHT=878&LAYERS=plateau_photo&STYLES=&FORMAT=image/png&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi:96&TRANSPARENT=TRUE
+```
+
 
 ### 2.2. CesiumJSで利用する方法
 
