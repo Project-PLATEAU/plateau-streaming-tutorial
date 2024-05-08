@@ -122,7 +122,7 @@ Project PLATEAUが[G空間情報センター](https://www.geospatial.jp/ckan/dat
 
 通常のWebAPIでは、3D Tiles/MVTのデータ一覧がJSONのレスポンスとしてサーバーから返却されます。データを利用する際には、レスポンス内に含まれる、`url`というフィールドに含まれるURLを利用してください。
 
-https://api.plateau.reearth.io/datacatalog/plateau-datasets
+https://api.plateauview.mlit.go.jp/datacatalog/plateau-datasets
 
 > [!WARNING]
 > APIのスキーマやレスポンスは予告なく変更されることがあります。また、提供期間やサービスレベルの保証もしておりません。ご了承の上ご利用ください。
