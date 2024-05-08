@@ -1,4 +1,4 @@
-# PLATEAU-3DTiles/MVT ストリーミング配信チュートリアル
+# PLATEAU-3DTiles/MVT 配信チュートリアル
 
 ## 1. PLATEAU-3DTiles/MVT の概要
 
