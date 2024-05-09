@@ -56,7 +56,8 @@ PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標�
 
 PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDを利用してください。
 
-なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
+> [!WARNING]
+> 本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことをご了承ください。
 
 **トークン**
 
@@ -99,7 +100,7 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
+  <title>PLATEAU-3DTiles/MVT、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <script src="https://unpkg.com/cesium-mvt-imagery-provider@1.4.1/dist/cesium-mvt-imagery-provider.umd.js"></script>
@@ -143,7 +144,7 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 
     // PLATEAU-Ortho
     const imageProvider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+      url: 'https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png',
       maximumLevel: 19
     });
     const currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);

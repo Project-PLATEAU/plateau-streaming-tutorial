@@ -22,6 +22,8 @@ PLATEAU-Orthoの特徴は、国土地理院が整備している[地理院タイ
 
 Project PLATEAUが新たに取得したオルソ航空写真は[G空間情報センター](https://www.geospatial.jp/ckan/dataset/plateau)からGeoTIFF形式で入手可能です。
 
+Project PLATEAUで配布しているデータの利用許諾については、クリエイティブ・コモンズ・ライセンスの表示4.0国際等に準拠していますので、無償かつ商用も含めた利用が可能です。詳しくはProject PLATEAU [サイトポリシー](https://www.mlit.go.jp/plateau/site-policy/)をご確認ください。
+
 ### PLATEAU-Orthoの整備地域
 
 | 地域コード | 都道府県 | 地域名 | 撮影年次 |
@@ -55,10 +57,6 @@ Project PLATEAUが新たに取得したオルソ航空写真は[G空間情報セ
 | 43443 | 熊本県 | 益城町 | 2020 |
 | 47201 | 沖縄県 | 那覇市 | 2018 |
 
-**無償で利用可能**
-
-Project PLATEAUで配布しているデータの利用許諾については、クリエイティブ・コモンズ・ライセンスの表示4.0国際等に準拠していますので、無償かつ商用も含めた利用が可能です。詳しくはProject PLATEAU [サイトポリシー](https://www.mlit.go.jp/plateau/site-policy/)をご確認ください。
-
 **ズームアップ可能**
 
 ズームレベル19までの拡大が可能です。これは、約30cmの解像度に相当します。インターネット地図の中では比較的高精度な画像です。
@@ -77,22 +75,18 @@ Project PLATEAUで配布しているデータの利用許諾については、�
 | 18 | 0.6m |
 | 19 | 0.3m |
 
+## 2. 配信URL
 
-## 2. PLATEAU-Orthoの利用方法
+> [!WARNING]
+> 本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことをご了承ください。
 
-本節では、PLATEAU-Ortho(xyzタイル）をCesiumJS、TerriaJS、Leaflet、QGISで利用する方法について解説します。
+### 2.1. PLATEAU-Ortho（xyzタイル）
 
-### 2.1. 配信URL
+```
+https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png
+```
 
-- PLATEAU-Ortho（xyzタイル）は以下のURLから利用できます。
-
-なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
-
-`https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png`
-
-- PLATEAU-Ortho（OGC WMS）は以下のAPIから利用できます。
-
-なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
+### 2.2. PLATEAU-Ortho （OGC WMS)
 
 
 **サービスアドレス**
@@ -146,17 +140,17 @@ EPSG:4326でのリクエスト例
 https://plateauortho.geospatial.jp/mapproxy/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=35.62364808927861759,139.853018468884585,35.67783063591231496,139.9193581472800645&CRS=EPSG:4326&WIDTH=1075&HEIGHT=878&LAYERS=plateau_photo&STYLES=&FORMAT=image/png&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi:96&TRANSPARENT=TRUE
 ```
 
-### 2.2. CesiumJSで利用する方法
+## 3. PLATEAU-Orthoの利用方法
 
-CesiumJSは一般的に使われている3次元地図を表示するためのJavaScriptライブラリです。以下はCesiumJSでのPLATEAU-Orthoの利用サンプルです。
+本節では、PLATEAU-Ortho(xyzタイル）をCesiumJS、TerriaJS、Leaflet、QGISで利用する方法について解説します。
+
+### 3.1. CesiumJSで利用する方法
+
+CesiumJSは一般的に使われている3次元地図を表示するためのJavaScriptライブラリです。
+
+CesiumJSでオルソ画像タイルを利用するには、地形モデルもあわせて使用することをおすすめします。ここでは、地形データとしてPLATEAU-Terrainを利用し、PLATEAU-Orthoを表示するためのサンプルコードを示します。
 
 Cesiumの構築方法についてはCesium GS社の[チュートリアル](https://cesium.com/learn/cesiumjs-learn/)や[ドキュメント](https://cesium.com/learn/cesiumjs/ref-doc/Viewer.html)を参照してください。
-
-#### 2.2.1 PLATEAU-Terrainを参照する方法
-
-CesiumJSでオルソ画像タイルを利用するには、地形モデルもあわせて使用することをおすすめします。
-
-ここでは、地形データとしてPLATEAU-Terrainを利用し、PLATEAU-Orthoを表示するためのサンプルコードを示します。
 
 PLATEAU-Terrainについては[PLATEAU-Terrain](/terrain/plateau-terrain-streaming.md)を参照してください。
 
@@ -166,7 +160,7 @@ PLATEAU-Terrainについては[PLATEAU-Terrain](/terrain/plateau-terrain-streami
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
+  <title>PLATEAU-3DTiles/MVT、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <script src="https://unpkg.com/cesium-mvt-imagery-provider@1.4.1/dist/cesium-mvt-imagery-provider.umd.js"></script>
@@ -210,7 +204,7 @@ PLATEAU-Terrainについては[PLATEAU-Terrain](/terrain/plateau-terrain-streami
 
     // PLATEAU-Ortho
     const imageProvider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+      url: 'https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png',
       maximumLevel: 19
     });
     const currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
@@ -231,25 +225,25 @@ PLATEAU-Terrainについては[PLATEAU-Terrain](/terrain/plateau-terrain-streami
 </html>
 ```
 
-### 2.2. TerriaJSで利用する方法
+### 3.2. TerriaJSで利用する方法
 
 PLATEAU VIEW 1.1では、TerriaJSというJavaScriptライブラリを使用しています。ここでは、TerriaJSにオルソ画像タイルを組み込む方法をご紹介します。
 
 TerriaJSのカタログファイルに以下のように記述することで、PLATEAU-OrthoをTerriaJSのレイヤとして組み込むことができます。
 
-```
+```json
 {
   "type": "open-street-map",
   "id": "/basemap//オルソ画像タイル/imagery",
   "name": "航空写真",
-  "url": "https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/",
+  "url": "https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/",
   "fileExtension": "png",
   "attribution": ""
-},
+}
 ```
 Project PLATEAUでは[PLATEAU VIEW 1.1](https://github.com/Project-PLATEAU/PLATEAU-VIEW-1.1)及びそのための[カタログファイルジェネレータ](https://github.com/Project-PLATEAU/plateau-catalog-generator)のソーススクリプトを公開していますので、そちらも参照してください。
 
-### 2.3. Leafletで利用する方法
+### 3.3. Leafletで利用する方法
 
 web地図を作成する際によく利用されるLeafletでの利用方法をサンプルHTMLで紹介します。
 
@@ -257,33 +251,33 @@ LeafletはJavaScriptの地図ライブラリです。無償で利用できるこ
 
 以下のHTMLはLeafletでオルソ画像タイルを表示するサンプルです。このHTMLをortho_test.htmlなどの名前でPCに保存して、ブラウザで開いてみてください。東京都心部のオルソ画像タイルがLeafletで表示されます。
 
-```
+```html
 <html lang=ja>
 <head>
   <title>LeafletでPLATEAU-Orthoを表示する</title>
   <meta charset="utf-8" />
-  <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script>
-  function init() {
-    var map = L.map('map').setView([35.68, 139.76], 14);
-    map.options.minZoom = 10;
-    map.options.maxZoom = 18;
-    L.tileLayer('https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png', {
-      attribution: '<a href="https://www.mlit.go.jp/plateau/">国土交通省Project PLATEAU</a>'
-    }).addTo(map);
-  }
+    document.addEventListener("DOMContentLoaded", () => {
+      const map = L.map('map').setView([35.68, 139.76], 14);
+      map.options.minZoom = 10;
+      map.options.maxZoom = 18;
+      L.tileLayer('https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png', {
+        attribution: '<a href="https://www.mlit.go.jp/plateau/">国土交通省Project PLATEAU</a>'
+      }).addTo(map);
+    });
   </script>
 </head>
-<body onload="init()">
-    <div id="map" style="width: 80%; height: 600px; border: solid 1px"></div>
+<body>
+  <div id="map" style="width: 80%; height: 600px; border: solid 1px"></div>
 </body>
 </html>
 ```
 
 このサンプル以外にも、背景画像や重ね合わせ画像として、画像タイルを読み込むためのサンプルがインターネット上に多数公開されています。それらを参考にして、Leafletの地図サイトを作成してみてください。
 
-### 2.4. QGISで利用する方法
+### 3.4. QGISで利用する方法
 
 [QGIS](https://qgis.org/ja/site/)はWindowsやMacで使える、オープンソースのGISソフトです。QGISではGISデータを表示するときの背景図として、PLATEAU-Orthoを使うことができます。
 
@@ -299,7 +293,9 @@ Tiles」を右クリックして、「新規接続」を選びます。
 - 名前は自由につけられます。
 - URL欄は次の文字を丸ごとコピー＆ペーストしてください。
 
-  - https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png
+  ```
+  https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png
+  ```
 
 - 最大ズームレベルは、19 にしてください。
 - 最後に「OK」を押します。
@@ -324,7 +320,7 @@ PLATEAUのオルソ画像タイルは全国で存在するわけではないの�
 
 QGISでPLATEAU-Ortho画像タイルを表示（背景はオープンストリートマップ）
 
-## 3. オルソ画像タイルを作成する方法
+## 4. オルソ画像タイルを作成する方法
 
 オルソ画像タイルを作るには専用のソフトウェアを利用します。
 

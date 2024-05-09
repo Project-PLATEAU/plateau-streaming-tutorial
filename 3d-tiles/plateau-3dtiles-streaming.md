@@ -32,7 +32,7 @@ PLATEAU-3DTiles/MVT の配信サービスを利用することで、独自に立
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
+  <title>PLATEAU-3DTiles/MVT、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <script src="https://unpkg.com/cesium-mvt-imagery-provider@1.4.1/dist/cesium-mvt-imagery-provider.umd.js"></script>
@@ -76,7 +76,7 @@ PLATEAU-3DTiles/MVT の配信サービスを利用することで、独自に立
 
     // PLATEAU-Ortho
     const imageProvider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+      url: 'https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png',
       maximumLevel: 19
     });
     const currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
