@@ -8,7 +8,7 @@ Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデ�
 
 ## 2. CityGMLの3D Tiles/MVTへの変換
 
-CityGMLを3D Tiles形式に変換するためには、以下の方法があります。詳しい情報は、それぞれのタイトルをクリックしてください。
+CityGMLを3D TilesまたはMVT形式に変換するためには、以下の方法があります。詳しい情報は、それぞれのタイトルをクリックしてください。
 
 - [PLATEAU GIS Converter](https://github.com/Project-PLATEAU/PLATEAU-GIS-Converter) : FY2023 の Project PLATEAU「都市デジタルツインの実現に向けた研究開発及び実証調査業務」（内閣府/研究開発とSociety5.0との橋渡しプログラム（BRIDGE））において開発されたOSSの変換ツール
 - [FME](https://github.com/Project-PLATEAU/FMEscript-CityGML-to-3DTiles)：Project PLATEAU で利用したCityGMLから3D TilesへのFME変換テンプレート
@@ -204,7 +204,7 @@ https://api.plateauview.mlit.go.jp/datacatalog/graphql
 
 GraphQLをブラウザ上から簡単に試すことができる「GraphiQL」は、上記URLをWebブラウザで開くことで利用可能です。GraphQLの詳細なドキュメントやリクエストはGraphiQLからご利用ください。
 
-以下は千代田区のデータ一覧を千代田区の行政コード（01100）をキーとして取得する例です。この他にも、都道府県一覧や都市一覧を取得するAPIなど、多彩なクエリが利用できます。
+以下の札幌市のデータ一覧を札幌市の行政コード（01100）をキーとして取得する例です。この他にも、都道府県一覧や都市一覧を取得するAPIなど、多彩なクエリが利用できます。
 
 **リクエスト例**
 
