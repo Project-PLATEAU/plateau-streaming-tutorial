@@ -168,9 +168,11 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 > [!NOTE]
 > CesiumJSでは、PLATEAU-Terrain以外に、地形データとしてCesiumがデフォルトで配信しているCesium World Terrainを利用することもできます。日本地域における地形データ詳細度は、Cesium World Terrainの方がPLATEAU-Terrainより劣りますが、世界各地において地形表現を有効にすることができます。Cesium World Terrainを利用する場合は、上記コード内の`terrainProvider`を以下のように設定してください。
 
-    var viewer = new Cesium.Viewer('cesiumContainer', {
-      terrainProvider: Cesium.createWorldTerrain()
-    });
+```js
+var viewer = new Cesium.Viewer('cesiumContainer', {
+  terrainProvider: Cesium.createWorldTerrain()
+});
+```
 
 ## 3. 地形データの作成
 
