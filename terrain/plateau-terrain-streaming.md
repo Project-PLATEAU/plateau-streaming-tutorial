@@ -1,5 +1,5 @@
-# plateau-terrain-streaming
-### PLATEAU-Terrain配信チュートリアル
+# PLATEAU-Terrain 配信チュートリアル
+
 ## 1. PLATEAU-Terrainの概要
 
 Project PLATEAUでは、日本全国の地形データを三次元形状で作成し、PLATEAU-Terrainとして配信を行っています。本チュートリアルでは、地形データ作成技術及びPLATEAU-Terrainの利用方法について解説します。
@@ -46,7 +46,7 @@ Quantize-mesh形式に興味のある方は、[このサイト](https://cesium.c
 
 PLATEAU VIEWでは、quantized-mesh形式のデータを.terraindb形式のファイルとして作成したPLATEAU-Terrainを利用しています。
 
-PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標高モデル5mメッシュを基本とし、5mメッシュが存在しない場所は基盤地図情報数値標高モデル10mメッシュを利用して作成されています。また、ジオイドモデルにはCesiumがサポートしているEGM96を使用しています。
+PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標高モデル5mメッシュを基本とし、5mメッシュが存在しない場所は基盤地図情報数値標高モデル10mメッシュを利用して作成されています。また、ジオイドモデルには「日本のジオイド2011 (Ver.2.2)」を使用しています。
 
 詳細なデータ作成方法については後述「3. 地形データの作成」を参照してください。
 
@@ -56,16 +56,38 @@ PLATEAU-Terrainは、国土地理院が整備した基盤地図情報数値標�
 
 PLATEAU-TerrainをCesiumで利用する際は以下のトークンとアセットIDを利用してください。
 
-なお、本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことご了承ください。
+> [!WARNING]
+> 本サービスはあくまで試験的な運用であるため、提供期間やサービスレベルについては保証できないことをご了承ください。
 
- - トークン
-   - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE
- - アセットID
-   - 770371
+**トークン**
 
-### 2.2 Ceisumのアプリケーション作成
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNjk0MTM4NC1lMWI0LTQxNTgtYjcxZS01ZWJhMGJlMTE1MWQiLCJpZCI6MTQ5ODk3LCJpYXQiOjE3MTUxNTEyODZ9.2aUmEQ2-fDsjf-XeC6-hZpwkgwLse3yXoXF4xTOvPAY
+```
 
-Cesium上でPLATEAU-Terrainを利用するためのサンプルコードを示します。　
+**アセットID**
+
+```
+2488101
+```
+
+**使用例**
+
+```js
+Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNjk0MTM4NC1lMWI0LTQxNTgtYjcxZS01ZWJhMGJlMTE1MWQiLCJpZCI6MTQ5ODk3LCJpYXQiOjE3MTUxNTEyODZ9.2aUmEQ2-fDsjf-XeC6-hZpwkgwLse3yXoXF4xTOvPAY";
+
+// ...
+
+viewer.scene.setTerrain(
+  new Cesium.Terrain(
+    Cesium.CesiumTerrainProvider.fromIonAssetId(2488101),
+  ),
+);
+```
+
+### 2.2. CeisumJSアプリケーションの作成
+
+CesiumJS上でPLATEAU-Terrainを利用するためのサンプルコードを示します。　
 地形データの配信についてご質問がある方は、PacificSpatialSolutions株式会社（info@pacificspatial.com）までご連絡ください。
 
 配信された地形データを利用する場合は、「地形データは、測量法に基づく国土地理院長承認（使用）R3JHs 778を得て使用」とデータの帰属に記載してください。
@@ -78,57 +100,61 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>PLATEAU-3DTiles、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Widgets/widgets.css" rel="stylesheet"></head>
-</head>
-<style>
-  #cesiumContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  html {
-    height: 100%;
-  }
-  body {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    height: 100%;
-  }
-</style>
+  <title>PLATEAU-3DTiles/MVT、PLATEAU-Ortho、PLATEAU-TerrainをCesiumで表示</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="https://unpkg.com/cesium-mvt-imagery-provider@1.4.1/dist/cesium-mvt-imagery-provider.umd.js"></script>
+  <style>
+    #cesiumContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <div id="cesiumContainer"></div>
   <script>
-    // Cesium ionの読み込み指定
-    Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE";
+    // PLATEAU-Terrainで必要
+    Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNjk0MTM4NC1lMWI0LTQxNTgtYjcxZS01ZWJhMGJlMTE1MWQiLCJpZCI6MTQ5ODk3LCJpYXQiOjE3MTUxNTEyODZ9.2aUmEQ2-fDsjf-XeC6-hZpwkgwLse3yXoXF4xTOvPAY";
 
-    // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
-    var viewer = new Cesium.Viewer("cesiumContainer", {
-      terrainProvider: new Cesium.CesiumTerrainProvider({
-        url: Cesium ionResource.fromAssetId(770371)
-      })
-    });
+    const viewer = new Cesium.Viewer("cesiumContainer", {});
 
-    // PLATEAU-Orthoの参照
-    var imageProvider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://gic-plateau.s3.ap-northeast-1.amazonaws.com/2020/ortho/tiles/{z}/{x}/{y}.png',
+    // PLATEAU-Terrain
+    viewer.scene.setTerrain(
+      new Cesium.Terrain(
+        Cesium.CesiumTerrainProvider.fromIonAssetId(2487029),
+      ),
+    );
+
+    // PLATEAU-Ortho
+    const imageProvider = new Cesium.UrlTemplateImageryProvider({
+      url: 'https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png',
       maximumLevel: 19
     });
-    var currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
+    const currentImage = viewer.scene.imageryLayers.addImageryProvider(imageProvider);
 
-   // 東京都千代田区の建物データ（3D Tiles）
-    var your_3d_tiles = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-      url: 'https://assets.cms.plateau.reearth.io/assets/11/6d05db-ed47-4f88-b565-9eb385b1ebb0/13100_tokyo23-ku_2022_3dtiles%20_1_1_op_bldg_13101_chiyoda-ku_lod1/tileset.json'
-    }));
+    // 東京都千代田区の建築物モデル（3D Tiles）
+    Cesium.Cesium3DTileset.fromUrl(
+      'https://assets.cms.plateau.reearth.io/assets/0e/e5948a-e95c-4e31-be85-1f8c066ed996/13101_chiyoda-ku_pref_2023_citygml_1_op_bldg_3dtiles_13101_chiyoda-ku_lod1/tileset.json'
+    ).then((tileset) => {
+      viewer.scene.primitives.add(tileset);
+    });
 
     // カメラの初期位置の指定
     viewer.camera.setView({
@@ -137,6 +163,15 @@ Cesiumの構築方法についてはCesium GS社の[チュートリアル](https
   </script>
 </body>
 </html>
+```
+
+> [!NOTE]
+> CesiumJSでは、PLATEAU-Terrain以外に、地形データとしてCesiumがデフォルトで配信しているCesium World Terrainを利用することもできます。日本地域における地形データ詳細度は、Cesium World Terrainの方がPLATEAU-Terrainより劣りますが、世界各地において地形表現を有効にすることができます。Cesium World Terrainを利用する場合は、上記コード内の`terrainProvider`を以下のように設定してください。
+
+```js
+var viewer = new Cesium.Viewer('cesiumContainer', {
+  terrainProvider: Cesium.createWorldTerrain()
+});
 ```
 
 ## 3. 地形データの作成
