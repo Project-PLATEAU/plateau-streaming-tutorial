@@ -38,6 +38,7 @@ https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png
 ```
 
 ズームレベルは10〜19に対応しています。
+
 **整備地域**
 
 | 地域コード | 都道府県 | 市町村 | 撮影年次 |
