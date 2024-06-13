@@ -39,7 +39,7 @@ https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{y}.png
 
 ズームレベルは10〜19に対応しています。
 
-**整備地域**
+**整備地域(xyzタイル)**
 
 | 地域コード | 都道府県 | 市町村 | 撮影年次 |
 | --- | --- | --- | --- |
@@ -169,7 +169,7 @@ EPSG:4326でのリクエスト例
 https://plateauortho.geospatial.jp/mapproxy/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=35.62364808927861759,139.853018468884585,35.67783063591231496,139.9193581472800645&CRS=EPSG:4326&WIDTH=1075&HEIGHT=878&LAYERS=plateau_photo&STYLES=&FORMAT=image/png&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi:96&TRANSPARENT=TRUE
 ```
 
-**整備地域**
+**整備地域OGC WMS**
 
 | 地域コード | 都道府県 | 地域名 | 撮影年次 |
 | :---: | :---: | :---: | :---: |
