@@ -20,66 +20,102 @@
 ### 表 1 可視化用変換結果データセット名
 | #  | パッケージ                 | 変換結果データセット名                          | データ形式  | 概要（*補足説明は後述）                         |
 |----|--------------------------|---------------------------------------------|-----------|-----------------------------------------------|
-| 1  | 建築物モデル                | bldg_lod1                                  | 3D Tiles  | LOD1建築物モデル                                |
-|    |                          | bldg_lod2                                  | 3D Tiles  | LOD2以下の最大詳細度の建築物モデル                    |
-|    |                          | bldg_lod3                                  | 3D Tiles  | LOD3以下の最大詳細度の建築物モデル                    |
-|    |                          | bldg_lod4                                  | 3D Tiles  | LOD4以下の最大詳細度の建築物モデル                    |
-|    |                          | bldg_lod1_no_texture                       | 3D Tiles  | LOD1建築物モデル（テクスチャなし）                     |
-|    |                          | bldg_lod2_no_texture                       | 3D Tiles  | LOD2以下の最大詳細度の建築物モデル（テクスチャなし）     |
-|    |                          | bldg_lod3_no_texture                       | 3D Tiles  | LOD3以下の最大詳細度の建築物モデル（テクスチャなし）     |
-|    |                          | bldg_lod4_no_texture                       | 3D Tiles  | LOD4以下の最大詳細度の建築物モデル（テクスチャなし）     |
-|    |                          | bldg_dm_geometric_attributes               | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | bldg_dm_annotations                        | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 2  | 交通（道路）モデル           | tran_lod0                                  | MVT       | LOD0道路モデル                                   |
-|    |                          | tran_lod1                                  | MVT       | LOD1道路モデル                                   |
-|    |                          | tran_lod2                                  | MVT       | LOD2道路モデル（交通領域、交通補助領域）                |
-|    |                          | tran_lod3                                  | 3D Tiles  | LOD3道路モデル（交通領域、交通補助領域）                |
-|    |                          | tran_dm_geometric_attributes               | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | tran_dm_annotations                        | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 3  | 交通（鉄道）モデル           | rwy_lod0                                   | MVT       | LOD0鉄道モデル                                    |
-|    |                          | rwy_lod1                                   | MVT       | LOD1鉄道モデル                                    |
-|    |                          | rwy_lod2                                   | MVT       | LOD2鉄道モデル（交通領域、交通補助領域）               |
-|    |                          | rwy_lod3                                   | 3D Tiles  | LOD3鉄道モデル（交通領域、交通補助領域）               |
-|    |                          | rwy_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | rwy_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 4  | 交通（徒歩道）モデル          | trk_lod0                                   | MVT       | LOD0徒歩道モデル                                    |
-|    |                          | trk_lod1                                   | MVT       | LOD1徒歩道モデル                                    |
-|    |                          | trk_lod2                                   | MVT       | LOD2徒歩道モデル（交通領域、交通補助領域）               |
-|    |                          | trk_lod3                                   | 3D Tiles  | LOD3徒歩道モデル（交通領域、交通補助領域）               |
-|    |                          | trk_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | trk_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 5  | 交通（広場）モデル           | squr_lod0                                  | MVT       | LOD0広場モデル                                     |
-|    |                          | squr_lod1                                  | MVT       | LOD1広場モデル                                     |
-|    |                          | squr_lod2                                  | MVT       | LOD2広場モデル（交通領域、交通補助領域）                |
-|    |                          | squr_lod3                                  | 3D Tiles  | LOD3広場モデル（交通領域、交通補助領域）                |
-|    |                          | squr_dm_geometric_attributes               | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | squr_dm_annotations                        | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 6  | 交通（航路）モデル           | wwy_lod0                                   | MVT       | LOD0航路モデル                                     |
-|    |                          | wwy_lod1                                   | MVT       | LOD1航路モデル                                     |
-|    |                          | wwy_lod2                                   | MVT       | LOD2航路モデル（交通領域）                             |
-| 7  | 土地利用モデル               | luse                                       | MVT       | LOD1土地利用モデル                                   |
-| 8  | 災害リスク（浸水）モデル - 洪水 | fld_{admin}_{river}_{scale}                | 3D Tiles  | LOD1洪水浸水想定区域モデル *補足説明1                 |
-| 9  | 災害リスク（浸水）モデル - 津波 | tnm_{name}                                 | 3D Tiles  | LOD1津波浸水想定区域モデル *補足説明2                 |
-| 10 | 災害リスク（浸水）モデル - 高潮 | htd_{name}                                 | 3D Tiles  | LOD1高潮浸水想定区域モデル *補足説明2                 |
-| 11 | 災害リスク（浸水）モデル - 内水 | ifld_{name}                                | 3D Tiles  | LOD1内水浸水想定区域モデル *補足説明2                 |
-| 12 | 災害リスク（土砂災害）モデル    | lsld                                       | MVT       | LOD1土砂災害警戒区域モデル                              |
-| 13 | 都市計画決定情報モデル          | urf_{class}                                | MVT       | LOD1都市計画決定情報モデル *補足説明3                 |
-| 14 | 橋梁モデル                   | brid_lod1                                  | 3D Tiles  | LOD1橋梁モデル                                       |
-|    |                          | brid_lod2                                  | 3D Tiles  | LOD2橋梁モデル                                       |
-|    |                          | brid_lod3                                  | 3D Tiles  | LOD3橋梁モデル                                       |
-|    |                          | brid_lod4                                  | 3D Tiles  | LOD4橋梁モデル                                       |
-|    |                          | brid_dm_geometric_attributes               | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | brid_dm_annotations                        | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 15 | トンネルモデル               | tun_lod1                                   | 3D Tiles  | LOD1トンネルモデル                                    |
-|    |                          | tun_lod2                                   | 3D Tiles  | LOD2トンネルモデル                                    |
-|    |                          | tun_lod3                                   | 3D Tiles  | LOD3トンネルモデル                                    |
-|    |                          | tun_lod4                                   | 3D Tiles  | LOD4トンネルモデル                                    |
-|    |                          | tun_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
-|    |                          | tun_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
-| 16 | その他の構造物モデル           | cons_lod0                                  | MVT       | LOD0その他の構造物モデル                               |
-|    |                          | cons_lod1                                  | 3D Tiles  | LOD1その他の構造物モデル                               |
-|    |                          | cons_lod2                                  | 3D Tiles  | LOD2その他の構造物モデル                               |
-|    |                          | cons
+| 1  | 建築物モデル               | bldg_lod1                                   | 3D Tiles  | LOD1建築物モデル                                |
+|    |                          | bldg_lod2                                   | 3D Tiles  | LOD2以下の最大詳細度の建築物モデル                   |
+|    |                          | bldg_lod3                                   | 3D Tiles  | LOD3以下の最大詳細度の建築物モデル                   |
+|    |                          | bldg_lod4                                   | 3D Tiles  | LOD4以下の最大詳細度の建築物モデル                   |
+|    |                          | bldg_lod1_no_texture                        | 3D Tiles  | LOD1建築物モデル（テクスチャなし）                    |
+|    |                          | bldg_lod2_no_texture                        | 3D Tiles  | LOD2以下の最大詳細度の建築物モデル（テクスチャなし）    |
+|    |                          | bldg_lod3_no_texture                        | 3D Tiles  | LOD3以下の最大詳細度の建築物モデル（テクスチャなし）    |
+|    |                          | bldg_lod4_no_texture                        | 3D Tiles  | LOD4以下の最大詳細度の建築物モデル（テクスチャなし）    |
+|    |                          | bldg_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | bldg_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 2  | 交通（道路）モデル          | tran_lod0                                   | MVT       | LOD0道路モデル                                   |
+|    |                          | tran_lod1                                   | MVT       | LOD1道路モデル                                   |
+|    |                          | tran_lod2                                   | MVT       | LOD2道路モデル（交通領域、交通補助領域）               |
+|    |                          | tran_lod3                                   | 3D Tiles  | LOD3道路モデル（交通領域、交通補助領域）               |
+|    |                          | tran_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | tran_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 3  | 交通（鉄道）モデル          | rwy_lod0                                    | MVT       | LOD0鉄道モデル                                    |
+|    |                          | rwy_lod1                                    | MVT       | LOD1鉄道モデル                                    |
+|    |                          | rwy_lod2                                    | MVT       | LOD2鉄道モデル（交通領域、交通補助領域）              |
+|    |                          | rwy_lod3                                    | 3D Tiles  | LOD3鉄道モデル（交通領域、交通補助領域）              |
+|    |                          | rwy_dm_geometric_attributes                 | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | rwy_dm_annotations                          | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 4  | 交通（徒歩道）モデル         | trk_lod0                                    | MVT       | LOD0徒歩道モデル                                   |
+|    |                          | trk_lod1                                    | MVT       | LOD1徒歩道モデル                                   |
+|    |                          | trk_lod2                                    | MVT       | LOD2徒歩道モデル（交通領域、交通補助領域）              |
+|    |                          | trk_lod3                                    | 3D Tiles  | LOD3徒歩道モデル（交通領域、交通補助領域）              |
+|    |                          | trk_dm_geometric_attributes                 | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | trk_dm_annotations                          | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 5  | 交通（広場）モデル          | squr_lod0                                   | MVT       | LOD0広場モデル                                    |
+|    |                          | squr_lod1                                   | MVT       | LOD1広場モデル                                    |
+|    |                          | squr_lod2                                   | MVT       | LOD2広場モデル（交通領域、交通補助領域）               |
+|    |                          | squr_lod3                                   | 3D Tiles  | LOD3広場モデル（交通領域、交通補助領域）               |
+|    |                          | squr_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | squr_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 6  | 交通（航路）モデル          | wwy_lod0                                    | MVT       | LOD0航路モデル                                    |
+|    |                          | wwy_lod1                                    | MVT       | LOD1航路モデル                                    |
+|    |                          | wwy_lod2                                    | MVT       | LOD2航路モデル（交通領域）                            |
+| 7  | 土地利用モデル               | luse                                        | MVT       | LOD1土地利用モデル                                   |
+| 8  | 災害リスク（浸水）モデル - 洪水 | fld_{admin}_{river}_{scale}                 | 3D Tiles  | LOD1洪水浸水想定区域モデル *補足説明1                 |
+| 9  | 災害リスク（浸水）モデル - 津波 | tnm_{name}                                  | 3D Tiles  | LOD1津波浸水想定区域モデル *補足説明2                 |
+| 10 | 災害リスク（浸水）モデル - 高潮 | htd_{name}                                  | 3D Tiles  | LOD1高潮浸水想定区域モデル *補足説明2                 |
+| 11 | 災害リスク（浸水）モデル - 内水 | ifld_{name}                                 | 3D Tiles  | LOD1内水浸水想定区域モデル *補足説明2                 |
+| 12 | 災害リスク（土砂災害）モデル     | lsld                                        | MVT       | LOD1土砂災害警戒区域モデル                              |
+| 13 | 都市計画決定情報モデル          | urf_{class}                                 | MVT       | LOD1都市計画決定情報モデル *補足説明3                 |
+| 14 | 橋梁モデル                    | brid_lod1                                   | 3D Tiles  | LOD1橋梁モデル                                       |
+|    |                          | brid_lod2                                   | 3D Tiles  | LOD2橋梁モデル                                       |
+|    |                          | brid_lod3                                   | 3D Tiles  | LOD3橋梁モデル                                       |
+|    |                          | brid_lod4                                   | 3D Tiles  | LOD4橋梁モデル                                       |
+|    |                          | brid_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | brid_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 15 | トンネルモデル               | tun_lod1                                    | 3D Tiles  | LOD1トンネルモデル                                    |
+|    |                          | tun_lod2                                    | 3D Tiles  | LOD2トンネルモデル                                    |
+|    |                          | tun_lod3                                    | 3D Tiles  | LOD3トンネルモデル                                    |
+|    |                          | tun_lod4                                    | 3D Tiles  | LOD4トンネルモデル                                    |
+|    |                          | tun_dm_geometric_attributes                 | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | tun_dm_annotations                          | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 16 | その他の構造物モデル           | cons_lod0                                   | MVT       | LOD0その他の構造物モデル                               |
+|    |                          | cons_lod1                                   | 3D Tiles  | LOD1その他の構造物モデル                               |
+|    |                          | cons_lod2                                   | 3D Tiles  | LOD2その他の構造物モデル                               |
+|    |                          | cons_lod3                                   | 3D Tiles | LOD3その他の構造物モデル                               |
+|    |                          | cons_dm_geometric_attributes                | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | cons_dm_annotations                         | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 17 | 都市設備モデル               | frn_lod1                                    | 3D Tiles  | LOD1都市設備モデル                                    |
+|    |                          | frn_lod2                                    | 3D Tiles  | LOD2都市設備モデル                                    |
+|    |                          | frn_lod3                                    | 3D Tiles  | LOD3都市設備モデル                                    |
+|    |                          | frn_dm_geometric_attributes                 | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | frn_dm_annotations                          | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 18 | 地下埋設物モデル              | unf_{class}_lod1                            | 3D Tiles  | LOD1地下埋設物モデル *補足説明4                        |
+|    |                          | unf_{class}_lod2                            | 3D Tiles  | LOD2地下埋設物モデル *補足説明4                        |
+|    |                          | unf_{class}_lod3                            | 3D Tiles  | LOD3地下埋設物モデル *補足説明4                        |
+|    |                          | unf_{class}_lod4                            | 3D Tiles  | LOD4地下埋設物モデル *補足説明4                        |
+|    |                          | unf_{class}_dm_geometric_attributes         | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | unf_{class}_dm_annotations                  | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 19 | 地下街モデル                | ubld_lod0                                   | MVT       | LOD0地下街モデル                                    |
+|    |                          | ubld_lod1                                   | 3D Tiles  | LOD1地下街モデル                                    |
+|    |                          | ubld_lod2                                   | 3D Tiles  | LOD2地下街モデル                                    |
+|    |                          | ubld_lod3                                   | 3D Tiles  | LOD3地下街モデル                                    |
+|    |                          | ubld_lod4                                   | 3D Tiles  | LOD4地下街モデル                                    |
+| 20 | 植生モデル                  | veg_{class}_lod1                            | 3D Tiles  | LOD1植生モデル *                                     |
+|    |                          | veg_{class}_lod2                            | 3D Tiles  | LOD2植生モデル *                                     |
+|    |                          | veg_{class}_lod3                            | 3D Tiles  | LOD3植生モデル *                                     |
+|    |                          | veg_{class}_dm_geometric_attributes         | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | veg_{class}_dm_annotations                  | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 21 | 地形モデル                  | （PLATEAU VIEW での可視化対象外）                   |           |                                                   |
+| 22 | 水部モデル                  | wtr_lod0                                    | MVT       | LOD0水部モデル                                    |
+|    |                          | wtr_lod1                                    | 3D Tiles  | LOD1水部モデル                                    |
+|    |                          | wtr_lod2                                    | 3D Tiles  | LOD2水部モデル                                    |
+|    |                          | wtr_lod3                                    | 3D Tiles  | LOD3水部モデル                                    |
+|    |                          | wtr_dm_geometric_attributes                 | MVT       | DmGeometricAttribute に記述されているジオメトリ       |
+|    |                          | wtr_dm_annotations                          | MVT       | DmAnnotation に記述されているジオメトリ            |
+| 23 | 区域モデル                  | area_Zone                                   | MVT       | LOD1区域モデル                                    |
+| 24 | 汎用都市オブジェクトモデル        | gen_{code}_lod0                             | MVT       | LOD0汎用都市オブジェクトモデル *補足説明6             |
+|    |                          | gen_{code}_lod1                             | 3D Tiles  | LOD1汎用都市オブジェクトモデル *補足説明6             |
+|    |                          | gen_{code}_lod2                             | 3D Tiles  | LOD2汎用都市オブジェクトモデル *補足説明6             |
+|    |                          | gen_{code}_lod3                             | 3D Tiles  | LOD3汎用都市オブジェクトモデル *補足説明6             |
+|    |                          | gen_{code}_lod4                             | 3D Tiles  | LOD4汎用都市オブジェクトモデル *補足説明6             |
 
 #### 補足説明1: 災害リスクモデル（浸水想定区域）洪水の変換結果データセット名
 
