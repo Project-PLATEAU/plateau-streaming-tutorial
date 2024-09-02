@@ -6,6 +6,9 @@ Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデ�
 
 本チュートリアルでは、3D TileおよびMVTの利用方法について解説します。
 
+> [!TIP]
+> 3D Tiles形式の3D都市モデルデータの仕様については、[PLATEAU 2023 可視化用データ変換仕様](./specification.md)を御覧ください。
+
 ## 2. CityGMLの3D Tiles/MVTへの変換
 
 CityGMLを3D TilesまたはMVT形式に変換するためには、以下の方法があります。詳しい情報は、それぞれのタイトルをクリックしてください。
