@@ -26,7 +26,7 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 
 | Day | Update | 説明 |
 |:-----------|:-----------|:-----------|
-| 2024/08/30 | 3D Tiles変換仕様を追加 | 可視化用データについて、変換仕様の詳細を[PLATEAU 2023 可視化用データ変換仕様](/3d-tiles/specification.md)に記載しました。|
+| 2024/09/02 | 3D Tiles変換仕様を追加 | 可視化用データについて、変換仕様の詳細を[PLATEAU 2023 可視化用データ変換仕様](/3d-tiles/specification.md)に記載しました。|
 | 2024/06/10 | 3D Tiles/MVT配信方法の刷新・TerrainとOrthoの更新 | [PLATEAU-3DTiles](/3d-tiles/plateau-3dtiles-streaming.md) と [PLATEAU-Terrain](/3d-tiles/plateau-3dtiles-streaming.md) と [PLATEAU-Ortho](/ortho/plateau-ortho-streaming.md) で配信されている3D Tiles・地形データ・オルソを2023年度のデータにアップデートし、MVTのデータを追加しました。静的なJSONファイルとマークダウンファイルでの配信URL提供に代わり、新たにデータカタログAPIを公開しました。サンプルコードを改訂しました。 |
 | 2023/10/25 | 3D Tiles配信URLの更新 | [PLATEAU-3DTiles](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesの一覧をアップデートしました。|
 | 2023/09/25 | 3D Tiles配信URLの更新 | [PLATEAU-3DTiles](/3d-tiles/plateau-3dtiles-streaming.md) で配信されている3DTilesの一覧をアップデートしました。|
