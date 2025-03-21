@@ -1,6 +1,6 @@
 # PLATEAU-CityGML 配信チュートリアル
 
-Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデータの配信を行っており、Project PLATEAUが[G空間情報センター](https://www.geospatial.jp/ckan/dataset/plateau)において公開している都市のCityGMLデータを利用可能です。
+Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデータの配信を行っており、Project PLATEAUが[G空間情報センター](https://front.geospatial.jp/plateau_portal_site/)において公開している都市のCityGMLデータを利用可能です。
 
 ここでは、そのCityGMLデータをより柔軟に取得するためのAPIとして、7種類の「CityGML API」の使用方法を説明します。
 
