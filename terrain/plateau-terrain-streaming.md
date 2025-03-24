@@ -2,7 +2,11 @@
 
 ## 1. PLATEAU-Terrainの概要
 
-Project PLATEAUでは、日本全国の地形データを三次元形状で作成し、PLATEAU-Terrainとして配信を行っています。本チュートリアルでは、地形データ作成技術及びPLATEAU-Terrainの利用方法について解説します。
+Project PLATEAUでは、Cesiumをベースに作られたPLATEAU VIEWで利用する日本全国の地形データ「PLATEAU-Terrain」を作成し、配信を行っています。
+またPLATEAUが提供するCityGML形式の地形データを、Mapbox Terrain-RGBに変換する「PLATEAU Mapbox Terrain Converter」を開発し、それを用いて作成した日本全国の地形データの配信も行ってます。
+
+本チュートリアルでは、地形データ作成技術及び利用方法について解説します。
+
 
 ### 1.1. 地形データについて
 
@@ -351,3 +355,11 @@ Ceisumで地形データを利用するには、地形データをサーバー�
 ```
 
 config.jsonを書き換えた後は、設定を反映させるため、Cesiumを再起動してください。
+
+## 4. 「PLATEAU Mapbox Terrain Converter」の概要
+
+これまで説明したterraindb形式のデータはCesium向けの地形データ形式ですが、Mapbox GL JSやMapLibre GL JSなどの他の地図エンジンは対応していないという課題があります。
+そこで、2024年度の事業において、 CityGML形式のPLATEAU地形モデル（TIN） をMapboxやMapLibreで利用可能な地形データであるMapbox Terrain-RGBに変換するライブラリ「PLATEAU Mapbox Terrain Converter」を開発しました。
+ライブラリの利用方法および生成した日本全域の地形データの利用方法については、下記のリポジトリを参照してください。
+
+[PLATEAU Mapbox Terrain Converter](https://github.com/Project-PLATEAU-Admin/plateau-mb-terrain-converter)
