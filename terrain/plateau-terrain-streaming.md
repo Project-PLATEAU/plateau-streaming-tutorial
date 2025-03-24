@@ -362,4 +362,4 @@ config.jsonを書き換えた後は、設定を反映させるため、Cesiumを
 そこで、2024年度の事業において、 CityGML形式のPLATEAU地形モデル（TIN） をMapboxやMapLibreで利用可能な地形データであるMapbox Terrain-RGBに変換するライブラリ「PLATEAU Mapbox Terrain Converter」を開発しました。
 ライブラリの利用方法および生成した日本全域の地形データの利用方法については、下記のリポジトリを参照してください。
 
-[PLATEAU Mapbox Terrain Converter](https://github.com/Project-PLATEAU-Admin/plateau-mb-terrain-converter)
+- [PLATEAU Mapbox Terrain Converter](https://github.com/Project-PLATEAU-Admin/plateau-mb-terrain-converter)

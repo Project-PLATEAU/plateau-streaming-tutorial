@@ -25,19 +25,20 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 
 ### 4. 付録
 
-## 4.1 Cesium ionに依存しないCesium向け地形データ配信手法
+### 4.1 Cesium ionに依存しないCesium向け地形データ配信手法
 
 PLATEAU-Terrainの作成、PLATEAU VIEWへのPLATEAU-Terrainの配信にはCesium社が提供するサービスCesium ionを用いていますが、データサイズが50GBを超える場合、有料のCommercialアカウント以上を利用する必要があります。
 
 そこで、Cesium ionに依存しないCesium向けの地形データ変換および配信方法として、「Cesium-Terrain-Builder」と「Cesium-Terrain-Server」の活用について整理しました。
 詳細については 、PLATEAU VIEW構築マニュアル（第5.0版）の 付録として公開予定です。
 
-## 4.2 Mapbox、MapLibre向け地形データ配信手法
+### 4.2 Mapbox、MapLibre向け地形データ配信手法
 PLATEAU-TerrainはCesium向けの地形データ形式（terraindb形式）であるため、Mapbox GL JSやMapLibre GL JSなどの他の地図エンジンは対応していないという課題があります。
 そこで、CityGML形式のPLATEAU 地形モデル（TIN形式）をMapboxやMapLibreで利用可能な地形データであるMapbox Terrain-RGBに変換するライブラリ「PLATEAU Mapbox Terrain Converter」を開発しました。
 
 ライブラリの利用方法および生成した日本全域の地形データの利用方法については、下記のリポジトリを参照してください。
-[PLATEAU Mapbox Terrain Converter](https://github.com/Project-PLATEAU-Admin/plateau-mb-terrain-converter)
+
+- [PLATEAU Mapbox Terrain Converter](https://github.com/Project-PLATEAU-Admin/plateau-mb-terrain-converter)
 
 ### 5. 更新履歴
 
