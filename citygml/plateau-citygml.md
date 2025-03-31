@@ -61,11 +61,11 @@ Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデ�
 3. **空間ID (`s`)**
     - **概要**: カンマ区切りで複数の空間IDを使用してエリアを指定。
     - **形式**: `s:<空間ID>,<空間ID>,...`
-        - 空間IDは、 `/z/x/y` 、 `/z/f/x/y` 、およびタイルハッシュの表記に対応。
+        - 空間IDは、`z/x/y`、 `z/f/x/y`、 `/z/x/y` 、 `/z/f/x/y` 、およびタイルハッシュの表記に対応。
     - **例**
-        - https://api.plateauview.mlit.go.jp/datacatalog/citygml/s:/18/1/232853/103220
+        - https://api.plateauview.mlit.go.jp/datacatalog/citygml/s:18/1/232853/103220
 
-        （ `/z/f/x/y` ）
+        （ `z/f/x/y` ）
 
 4. **座標範囲 (`r`)**
     - **概要**: 座標範囲を指定してエリアを指定。
@@ -282,7 +282,7 @@ CityGMLのURLのリストを入力すると、関連するCityGMLファイルを
 
 - **目的:** CityGMLのURLと空間IDのリストを入力すると、その空間ID内に含まれる地物のgml_idのリストを返す。
 - **クエリパラメータ**:
-    - `sid`：空間IDでカンマ区切りで指定可能。/z/x/y・/z/f/x/y・ハッシュタイルが指定可能。
+    - `sid`：空間IDでカンマ区切りで指定可能。z/x/y・z/f/x/y・/z/x/y・/z/f/x/y・ハッシュタイルが指定可能。
 - **レスポンス**:
     - **200 OK**: CityObjectMemberのgml:idが複数返却される。
 
@@ -299,7 +299,7 @@ CityGMLのURLのリストを入力すると、関連するCityGMLファイルを
 
 - **呼び出し例**
 
-    https://api.plateauview.mlit.go.jp/citygml/features?url=https://assets.cms.plateau.reearth.io/assets/59/984b81-8516-4e13-a8f5-2ca24e272c3e/13101_chiyoda-ku_city_2023_citygml_1_op/udx/bldg/53394600_bldg_6697_op.gml&sid=/18/0/232840/103234,/18/0/232840/103235
+    https://api.plateauview.mlit.go.jp/citygml/features?url=https://assets.cms.plateau.reearth.io/assets/59/984b81-8516-4e13-a8f5-2ca24e272c3e/13101_chiyoda-ku_city_2023_citygml_1_op/udx/bldg/53394600_bldg_6697_op.gml&sid=18/0/232840/103234,18/0/232840/103235
 
 
 # 5. CityGML 空間ID属性API
@@ -308,7 +308,8 @@ CityGMLのURLのリストを入力すると、関連するCityGMLファイルを
 
 - **目的**: 空間IDと地物型のリストを入力すると、その範囲に含まれる地物の属性情報をJSON形式で返却するAPI。1・4・3のAPIを順番に呼び出す手間を省くことができる。
 - **クエリパラメータ**:
-    - `sid` : 空間IDをカンマ区切りで複数指定可能。最低1つ以上必要。/z/x/y・/z/f/x/y・ハッシュタイルが指定可能。
+    - `sid` : 空間IDをカンマ区切りで複数指定可能。最低1つ以上必要。z/x/y・z/f/x/y・/z/x/y・/z/f/x/y・ハッシュタイルが指定可能。
+    - `skip_code_list_fetch` : 属性のコードリストを取得しない場合はtrueを指定。デフォルトはfalse。
     - `type` : 地物型をカンマ区切りで複数指定可能。最低1つ以上必要。
 - **レスポンス**:
     - **200 OK**: リクエストが受理され、属性情報がJSON形式で返却される。レスポンスのスキーマはCityGML属性APIと同じ。
@@ -377,4 +378,4 @@ CityGMLのURLのリストを入力すると、関連するCityGMLファイルを
 
 - 呼び出し例
 
-    https://api.plateauview.mlit.go.jp/citygml/spatialid_attributes?sid=/18/0/232840/103234,/18/0/232840/103235&type=bldg,veg,tran
+    https://api.plateauview.mlit.go.jp/citygml/spatialid_attributes?sid=18/0/232840/103234,18/0/232840/103235&type=bldg,veg,tran
