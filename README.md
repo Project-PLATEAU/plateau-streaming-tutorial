@@ -22,6 +22,7 @@ Project PLATEAUでは、3D都市モデルの可視化環境としてCesium及び
 | [PLATEAU-3DTiles/MVT](/3d-tiles/plateau-3dtiles-streaming.md) | 建築物モデル等の3D Tiles/MVTデータ |
 | [PLATEAU-Terrain](/terrain/plateau-terrain-streaming.md) | 地形モデルのTerraindbデータ |
 | [PLATEAU-Ortho](/ortho/plateau-ortho-streaming.md) | 航空写真オルソ画像タイルデータ |
+| [PLATEAU MCP Server](/mcp/plateau-mcp.md) | AIクライアント向けMCPサーバー |
 
 ### 4. 付録
 
