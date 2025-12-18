@@ -607,17 +607,17 @@ CityGMLファイルから指定した空間ID（SpatialID）に交差する地�
 
 ## 技術仕様
 
-このサーバーは [Model Context Protocol (MCP)](https://spec.modelcontextprotocol.io/) の公式仕様に準拠しています。
+このサーバーは [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) の公式仕様に準拠しています。
 
-- プロトコル: MCP (Model Context Protocol) v1.0
+- プロトコル: [MCP (Model Context Protocol) 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18)
 - トランスポート: HTTP（単一JSONレスポンス形式、SSE非使用）
 - メッセージ形式: JSON-RPC 2.0
 - 認証: なし（公開データのため）
-- 実装ライブラリ: [mark3labs/mcp-go](https://github.com/mark3labs/mcp-go)
+- 実装ライブラリ: [mark3labs/mcp-go](https://github.com/mark3labs/mcp-go) v0.43.2
 
 ## 関連リンク
 
 - [PLATEAU 公式サイト](https://www.mlit.go.jp/plateau/)
 - [3D都市モデル標準製品仕様書](https://www.mlit.go.jp/plateaudocument/)
 - [3D都市モデル標準作業手順書](https://www.mlit.go.jp/plateaudocument02/)
-- [Model Context Protocol (MCP) 仕様](https://spec.modelcontextprotocol.io/)
+- [Model Context Protocol (MCP) 仕様](https://modelcontextprotocol.io/specification)
