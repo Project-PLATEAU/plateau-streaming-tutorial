@@ -1,5 +1,10 @@
 # PLATEAU-Terrain 配信チュートリアル
 
+> [!IMPORTANT]
+> 本チュートリアルは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
 ## 1. PLATEAU-Terrainの概要
 
 Project PLATEAUでは、Cesiumをベースに作られたPLATEAU VIEWで利用する日本全国の地形データ「PLATEAU-Terrain」を作成し、配信を行っています。

@@ -1,5 +1,10 @@
 # PLATEAU MCP Server
 
+> [!IMPORTANT]
+> 本チュートリアルは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
 このパッケージは、PLATEAU（プラトー）の3D都市モデルに関する情報をAIクライアントから簡単にアクセスできるようにするMCP（Model Context Protocol）サーバーを提供します。
 
 > [!WARNING]

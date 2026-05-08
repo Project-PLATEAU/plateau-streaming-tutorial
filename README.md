@@ -1,5 +1,10 @@
 # PLATEAU配信サービス（試験運用） チュートリアル
 
+> [!IMPORTANT]
+> 本チュートリアルは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
 ### 1. 本リポジトリについて
 
 Project PLATEAUでは、プロジェクトにおいて作成した3D都市モデルをはじめとする各種データセットをウェブ上で提供するPLATEAU配信サービスを試験運用しています。

@@ -3,6 +3,12 @@
 
 # PLATEAU 2023 可視化用データ変換仕様
 
+> [!IMPORTANT]
+> 本ドキュメントは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
+
 ## 本仕様書の目的
 
 本仕様書は、3D都市モデル標準製品仕様書3.x版に基づいて整備されたCityGML形式の3D都市モデルデータをCesium環境で可視化するためのCesium 3D Tiles（以下「3D Tiles」といいます）またはMapbox Vector Tile（以下「MVT」といいます）データセットへの変換仕様（主に主題属性の構成）を説明するものです。

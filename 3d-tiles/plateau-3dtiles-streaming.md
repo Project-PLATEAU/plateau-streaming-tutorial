@@ -1,5 +1,10 @@
 # PLATEAU-3DTiles/MVT 配信チュートリアル
 
+> [!IMPORTANT]
+> 本チュートリアルは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
 ## 1. PLATEAU-3DTiles/MVT の概要
 
 Project PLATEAUでは、CityGML形式で作成された3D都市モデルのデータを3D Tiles 1.0及びMVT（Mapbox Vector Tiles）形式に変換し、それぞれ配信を行っています。

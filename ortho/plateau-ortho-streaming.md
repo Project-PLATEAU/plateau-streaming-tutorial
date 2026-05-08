@@ -1,5 +1,10 @@
 # PLATEAU-Ortho 配信チュートリアル
 
+> [!IMPORTANT]
+> 本チュートリアルは [PLATEAU 配信サービス ドキュメントサイト](https://docs.plateauview.mlit.go.jp) に全面移行しました。
+>
+> 最新の情報は **<https://docs.plateauview.mlit.go.jp>** をご参照ください。本リポジトリのドキュメントは今後更新されません。
+
 ## 1. PLATEAU-Orthoの概要
 
 Project PLATEAUでは、航空写真測量によって作成したオルソ画像をタイル化し、PLATEAU-Orthoとして配信を行っています。本チュートリアルでは、タイル化技術及びPLATEAU-Orthoの利用方法について解説します。
